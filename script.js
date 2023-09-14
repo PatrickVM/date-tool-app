@@ -88,4 +88,36 @@ document.addEventListener("DOMContentLoaded", function () {
   // Display initial random questions
   displayRandomDadQuestion();
   displayRandomChildQuestion();
+
+  const quotes = [
+    "The flower that blooms in adversity is the most rare and beautiful of all. - Mulan",
+    "Hakuna Matata! It means no worries for the rest of your days. - The Lion King",
+    "All our dreams can come true if we have the courage to pursue them. - Walt Disney",
+    // Add more quotes here
+  ];
+
+  const quoteContainer = document.getElementById("quote-container");
+
+  function getRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const randomQuote = quotes[randomIndex];
+    return randomQuote;
+  }
+
+  function displayRandomQuote() {
+    const randomQuote = getRandomQuote();
+    quoteContainer.textContent = randomQuote;
+  }
+
+  // Check if a quote is stored in local storage
+  const storedQuote = localStorage.getItem("randomQuote");
+
+  if (storedQuote) {
+    // If a quote is already stored, display it
+    quoteContainer.textContent = storedQuote;
+  } else {
+    // If no quote is stored, display a random one and store it
+    displayRandomQuote();
+    localStorage.setItem("randomQuote", quoteContainer.textContent);
+  }
 });
