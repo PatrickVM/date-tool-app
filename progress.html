@@ -40,9 +40,64 @@
         left: 0;
         z-index: -1;
       } */
+
+      .nav-items {
+        display: flex;
+        list-style-type: none;
+      }
+      .nav-item {
+        margin: 0 2rem;
+      }
+      .nav-link {
+        font-size: 1.1rem;
+        letter-spacing: 0.05rem;
+        position: relative;
+        /* background: -webkit-linear-gradient(
+      var(--primary-color-alt),
+      var(--primary-color)
+    ); */
+        background-color: white;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .nav-link::before {
+        content: "";
+        background: linear-gradient(
+          var(--primary-color),
+          var(--primary-color-alt)
+        );
+        width: 100%;
+        height: 0.05rem;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 150ms;
+      }
+      .nav-link:hover::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
     </style>
   </head>
   <body>
+    <nav class="navbar">
+      <ul class="nav-items">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a href="progress.html" class="nav-link">NEWS</a>
+        </li>
+        <li class="nav-item">
+          <a href="progress.html" class="nav-link">*SOMETHING*</a>
+        </li>
+        <li class="nav-item">
+          <a href="progress.html" class="nav-link">*ELSE*</a>
+        </li>
+      </ul>
+    </nav>
     <div class="space-background"></div>
     <div class="container">
       <h1>Work in Progress</h1>
