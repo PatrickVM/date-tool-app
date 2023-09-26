@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const childQuestionButton = document.getElementById("get-child-question");
   const childQuestionDisplay = document.getElementById("child-question");
 
+  const quoteContainer = document.getElementById("quote-container");
+
   // Sample questions for dad and child
   const dadQuestions = [
     "What's your favorite Disney character and why?",
@@ -67,6 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
     "What's a surprise you'd like to plan for your dad?",
   ];
 
+  const quotes = [
+    "The flower that blooms in adversity is the most rare and beautiful of all. - Mulan",
+    "Hakuna Matata! It means no worries for the rest of your days. - The Lion King",
+    "All our dreams can come true if we have the courage to pursue them. - Walt Disney",
+    // Add more quotes here
+  ];
+
   // Function to display a random question for dad
   function displayRandomDadQuestion() {
     const randomIndex = Math.floor(Math.random() * dadQuestions.length);
@@ -81,43 +90,40 @@ document.addEventListener("DOMContentLoaded", function () {
     childQuestionDisplay.textContent = randomQuestion;
   }
 
+  function displayRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const randomQuote = quotes[randomIndex];
+    // const randomQuote = getRandomQuote();
+    quoteContainer.textContent = randomQuote;
+  }
+
   // Add click event listeners to the "Get Question" buttons
   dadQuestionButton.addEventListener("click", displayRandomDadQuestion);
   childQuestionButton.addEventListener("click", displayRandomChildQuestion);
+
+  quoteContainer.addEventListener("click", displayRandomQuote);
 
   // Display initial random questions
   displayRandomDadQuestion();
   displayRandomChildQuestion();
 
-  const quotes = [
-    "The flower that blooms in adversity is the most rare and beautiful of all. - Mulan",
-    "Hakuna Matata! It means no worries for the rest of your days. - The Lion King",
-    "All our dreams can come true if we have the courage to pursue them. - Walt Disney",
-    // Add more quotes here
-  ];
+  displayRandomQuote();
 
-  const quoteContainer = document.getElementById("quote-container");
-
-  function getRandomQuote() {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    const randomQuote = quotes[randomIndex];
-    return randomQuote;
-  }
-
-  function displayRandomQuote() {
-    const randomQuote = getRandomQuote();
-    quoteContainer.textContent = randomQuote;
-  }
+  // function getRandomQuote() {
+  //   const randomIndex = Math.floor(Math.random() * quotes.length);
+  //   const randomQuote = quotes[randomIndex];
+  //   return randomQuote;
+  // }
 
   // Check if a quote is stored in local storage
-  const storedQuote = localStorage.getItem("randomQuote");
+  // const storedQuote = localStorage.getItem("randomQuote");
 
-  if (storedQuote) {
-    // If a quote is already stored, display it
-    quoteContainer.textContent = storedQuote;
-  } else {
-    // If no quote is stored, display a random one and store it
-    displayRandomQuote();
-    localStorage.setItem("randomQuote", quoteContainer.textContent);
-  }
+  // if (storedQuote) {
+  // If a quote is already stored, display it
+  // quoteContainer.textContent = storedQuote;
+  // } else {
+  // If no quote is stored, display a random one and store it
+
+  // localStorage.setItem("randomQuote", quoteContainer.textContent);
+  // }
 });
